@@ -8,7 +8,7 @@ body {
 .weather-container {
     max-width: 600px;
     margin: 50px auto;
-    background-color: #fff;
+    background-color: #a0ceee;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -28,6 +28,28 @@ ul {
 }
 
 li {
+    margin-bottom: 10px;
+}
+
+.day, .icon, .temperature {
+    text-align: center;
+}
+
+.day {
+    font-weight: bold;
+}
+
+.icon i {
+    font-size: 2em;
+}
+
+#forecast li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 

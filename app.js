@@ -33,15 +33,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayWeeklyWeather(data) {
         const forecastElement = document.getElementById('forecast');
         forecastElement.innerHTML = '';
-
+    
+        const weatherIconsMap = {
+            'clear': 'fas fa-sun',          // Día despejado
+            'clouds': 'fas fa-cloud',       // Nublado
+            'rain': 'fas fa-cloud-showers-heavy',  // Lluvia
+            'snow': 'fas fa-snowflake'      // Nieve
+            // Puedes agregar más mapeos según tus necesidades
+        };
+    
         for (let i = 0; i < data.list.length; i += 8) {
             const date = new Date(data.list[i].dt * 1000);
             const day = date.toLocaleDateString('es-ES', { weekday: 'long' });
             const temperature = data.list[i].main.temp;
-
+            const weatherMain = data.list[i].weather[0].main.toLowerCase();
+            const weatherIconClass = weatherIconsMap[weatherMain];
+    
             const li = document.createElement('li');
-            li.textContent = `${day}: ${temperature}°C`;
+            li.innerHTML = `
+                <div class="day">${day}</div>
+                <div class="icon"><i class="${weatherIconClass}"></i></div>
+                <div class="temperature">${temperature}°C</div>
+            `;
             forecastElement.appendChild(li);
         }
     }
+    
 });
