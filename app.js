@@ -24,10 +24,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const locationElement = document.getElementById('location');
         const temperatureElement = document.getElementById('temperature');
         const descriptionElement = document.getElementById('description');
+        const iconDayNowElement = document.getElementById('iconDayNow');
+        const weatherIconsMap = {
+            'clear': 'fas fa-sun',          // Día despejado
+            'clouds': 'fas fa-cloud',       // Nublado
+            'rain': 'fas fa-cloud-showers-heavy',  // Lluvia
+            'snow': 'fas fa-snowflake'      // Nieve
+            // Puedes agregar más mapeos según tus necesidades
+        };
 
         locationElement.textContent = `${data.name}, ${data.sys.country}`;
         temperatureElement.textContent = `Temperatura: ${data.main.temp}°C`;
         descriptionElement.textContent = `Descripción: ${data.weather[0].description}`;
+        const weatherMain = data.weather[0].main.toLowerCase();
+        const weatherIconClass = weatherIconsMap[weatherMain];
+
+        const div = document.createElement('div');
+        div.innerHTML = `<i class="${weatherIconClass}"></i>`;
+        iconDayNowElement.appendChild(div);
     }
 
     function displayWeeklyWeather(data) {

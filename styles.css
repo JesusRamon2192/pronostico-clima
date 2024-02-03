@@ -22,6 +22,22 @@ h1, h2 {
     margin-top: 20px;
 }
 
+#currentData {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
+
+#iconDayNow{
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 2em;
+
+}
+
 ul {
     list-style: none;
     padding: 0;
